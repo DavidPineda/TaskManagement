@@ -1,0 +1,54 @@
+<div class="form-login">
+    <h4 class="blue-text text-darken-3">Formulario de registro</h4>
+    <div class="container">    
+        <div class="row">
+            <form class="col s12" #myForm="ngForm" (ngSubmit)="onSubmit()">
+                <fieldset>
+                    <div class="row">
+                        <div class="input-field col l6 m6 s12">
+                            <i class="material-icons prefix">account_circle</i>                                    
+                            <label for="txtFirstName">Nombre</label>                             
+                            <input placeholder="Nombre" #txtFirstName="ngForm" ngControl="txtFirstName" [(ngModel)]="user.firstName" type="text" id="txtFirstName">
+                        </div>
+                        <div class="input-field col l6 m6 s12">
+                            <i class="material-icons prefix">account_circle</i>                            
+                            <label for="txtLastname">Apellido</label>
+                            <input placeholder="Apellido" #txtLastname="ngForm" ngControl="txtLastname" [(ngModel)]="user.lastName" type="text" id="txtLastName">                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col l6 m6 s12">
+                            <i class="material-icons prefix">email</i>
+                            <label for="txtEmail">Correo Electronico</label>
+                            <input placeholder="Correo Electronico" #txtEmail="ngForm" ngControl="txtEmail" [(ngModel)]="user.email" type="email" id="txtEmail"> 
+                        </div>
+                        <div class="input-field col l6 m6 s12">
+                            <i class="material-icons prefix">phone</i>
+                            <label for="txtPhone">Celular</label>
+                            <input placeholder="Celular" #txtPhone="ngForm" ngControl="txtPhone" [(ngModel)]="user.phone" type="text" id="txtPhone">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col l6 m6 s12">
+                            <i class="material-icons prefix">lock</i>                             
+                            <label for="txtPassword">Contraseña</label>                                    
+                            <input placeholder="Contraseña" #txtPassword="ngForm" ngControl="txtPassword" [(ngModel)]="user.password" type="password" id="txtPassword"> 
+                        </div>
+                        <div class="input-field col l6 m6 s12">
+                            <i class="material-icons prefix">lock</i>                             
+                            <label for="txtComfirmPassword">Confirmar Contraseña</label>                                    
+                            <input placeholder="Confirmar Contraseña" #txtComfirmPassword="ngForm" ngControl="txtComfirmPassword" [(ngModel)]="password" type="password" id="txtComfirmPassword"> 
+                        </div>                        
+                    </div>
+                    <div class="row">
+                        <div class="btn-center col s12">
+                            <button type="submit" class="btn waves-effect waves-light" name="action">Entrar
+                                <i class="material-icons right">perm_identity</i>
+                            </button>                                        
+                        </div>                                                                                                                                                                
+                    </div>
+                </fieldset>
+            </form>                        
+        </div>
+    </div>
+</div>
