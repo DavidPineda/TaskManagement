@@ -1,19 +1,29 @@
 import {Component} from "@angular/core";
 import {User} from "./../../../models/user";
+import {UserService} from "./../../../services/user.service";
 
 @Component({
     selector: "app-register",
-    templateUrl: "./app/components/register/views/register.html"
+    templateUrl: "./app/components/register/views/register.html",
+    providers: [UserService]
 })
 
 export class RegisterComponent {
 
     public user: User;
 
-    constructor() {
+    constructor(
+        private userService: UserService
+    ) {
         this.user = new User();
     }
+
     onSubmit() {
-        // ToDo Add Method for register User
+        this.userService
+            .save(this.user)
+            .then(res => {
+                console.log(res as User);
+            })
+            .catch(error => { console.log(error); });
     }
 }
