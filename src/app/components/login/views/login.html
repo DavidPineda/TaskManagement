@@ -4,18 +4,22 @@
         <div class="container">
             <div class="container">    
                 <div class="row">
-                    <form class="col s12" action="/login" method="POST">
+                    <form class="col s12" #myForm="ngForm" (ngSubmit)="onSubmit()">
                         <fieldset>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <label for="txtUserName">Nombre de Usuario</label>                                    
-                                    <input placeholder="Nombre de Usuario" required="required" type="text" id="txtUserName" name="txtUserName"> 
+                                    <label for="txtEmail">Email</label>                                    
+                                    <input placeholder="Email" #txtEmail="ngForm" 
+                                        ngControl="txtEmail" [(ngModel)]="user.email" 
+                                        required="required" type="text" id="txtEmail"> 
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
                                     <label for="txtPassword">Password</label>                                    
-                                    <input placeholder="Password" required="required" type="password" id="txtPassword" name="txtPassword"> 
+                                    <input placeholder="Password" #txtPassword="ngForm" 
+                                        ngControl="txtPassword" [(ngModel)]="user.password"
+                                        required="required" type="password" id="txtPassword" name="txtPassword"> 
                                 </div>                                
                             </div>
                             <div class="row">

@@ -6,19 +6,26 @@ import "rxjs/add/operator/toPromise";
 @Injectable()
 export class UserService {
 
-    private userUrl: string = 'http://127.0.0.1:3000/api/users';
+    private userUrl: string = 'http://127.0.0.1:3000/api';
+    private headers: any = new Headers({'Content-Type': 'application/json'});
 
     constructor(private http: Http) {}
 
-    public save(user: User): Promise<User> {
-        return this.post(user);
+    // Autenticacion de usuario
+    public login(user: User): any {
+        let url = this.userUrl + "/login";
+        return this.http
+                   .post(url, JSON.stringify(user), {headers: this.headers})
+                   .toPromise()
+                   .then(response => response.json())
+                   .catch(this.handleError);
     }
 
-    // Add new User
-    private post(user: User): Promise<User> {
-        let headers = new Headers({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'});
+    // Registro de usuario 
+    private signUp(user: User): any {
+        let url = this.userUrl + "/signUp";
         return this.http
-                   .post(this.userUrl, JSON.stringify(user), {headers: headers})
+                   .post(url, JSON.stringify(user), {headers: this.headers})
                    .toPromise()
                    .then(res => res.json())
                    .catch(this.handleError);
