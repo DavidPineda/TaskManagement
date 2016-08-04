@@ -99,7 +99,9 @@ gulp.task("libs", () => {
             'reflect-metadata/Reflect.js',
             'rxjs/**',
             'zone.js/dist/**',
-            '@angular/**'
+            '@angular/**',
+            'angular2-jwt/angular2-jwt.js',
+            'jwt-decode/**'
         ], {cwd: "node_modules/**"}) /* Glob required here. */
         .pipe(gulp.dest("build/lib"));
 });

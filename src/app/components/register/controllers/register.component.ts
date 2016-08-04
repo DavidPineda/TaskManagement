@@ -1,6 +1,7 @@
 import {Component} from "@angular/core";
 import {User} from "./../../../models/user";
 import {UserService} from "./../../../services/user.service";
+import {Router, ActivatedRoute} from "@angular/router";
 
 @Component({
     selector: "app-register",
@@ -13,16 +14,19 @@ export class RegisterComponent {
     public user: User;
 
     constructor(
-        private userService: UserService
+        private userService: UserService,
+        private router: Router
     ) {
         this.user = new User();
     }
 
     onSubmit() {
         this.userService
-            .save(this.user)
+            .signUp(this.user)
             .then(res => {
-                console.log(res as User);
+                // Se guarda el Token del usuario
+                this.userService.saveJWT(res);
+                this.router.navigate(["/dashboard"]);
             })
             .catch(error => { console.log(error); });
     }

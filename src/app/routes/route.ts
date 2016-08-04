@@ -1,4 +1,5 @@
 import {provideRouter, RouterConfig} from "@angular/router";
+import {AuthGuard} from "./../services/auth.service";
 import {LoginComponent} from "./../components/login/controllers/login.component";
 import {RegisterComponent} from "./../components/register/controllers/register.component";
 import {DashBoardComponent} from "./../components/dashboard/controllers/dashboard.component";
@@ -14,10 +15,16 @@ const routes: RouterConfig = [
     },
     {
         path: 'dashboard',
+        canActivate: [AuthGuard],
         component: DashBoardComponent
     },
     {
         path: '',
+        redirectTo: 'login',
+        pathMatch: 'full'
+    },
+    {
+        path: '*',
         redirectTo: 'login',
         pathMatch: 'full'
     }

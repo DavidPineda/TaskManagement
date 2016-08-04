@@ -25,7 +25,9 @@ export class LoginComponent {
             .login(this.user)
             .then(res => {
                 if (res.success) {
-                    this.router.navigate(["dashboard"]);
+                    // Se guarda el Token del usuario
+                    this.userService.saveJWT(res);
+                    this.router.navigate(["/dashboard"]);
                 } else {
                     console.log("ERROR");
                 }
